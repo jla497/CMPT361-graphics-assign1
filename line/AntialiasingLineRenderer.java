@@ -99,15 +99,7 @@ public class AntialiasingLineRenderer implements LineRenderer{
         if(Double.isNaN(d)){
             return 0.0;
         }
-//        
-//        if(x== -250 && y == 105){
-//            
-//        System.out.printf("b2: %.2f\n", b2);
-//        System.out.printf("Xint: %.2f Yint: %.2f\n", Xint, Yint);
-//            System.out.printf("adj: %.2f hyp: %.2f", adj, hyp);
-//            System.out.printf("hyp2: %.2f Ya: %.2f, d: %.2f ", hyp2, Ya,d);
-//        }
-//       
+        
         return d;
     }
     
