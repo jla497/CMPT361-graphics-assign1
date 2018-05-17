@@ -28,7 +28,7 @@ public class StarburstLineTest {
 		
 		for(int ray = 0; ray < NUM_RAYS; ray++) {
 			Vertex3D radialPoint = radialPoint(radius, angle);
-//                        if(ray == 84) {
+//                        if(ray % 10 == 0) {
 //                        renderer.drawLine(center, radialPoint, panel);
 //			
 //                        }

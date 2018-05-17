@@ -8,7 +8,8 @@ package line;
 import geometry.Vertex3D;
 import windowing.drawable.Drawable;
 import windowing.graphics.Color;
-
+import java.util.HashMap;
+import java.util.Map;
 /**
  *
  * @author Administrator
@@ -35,35 +36,38 @@ public class AntialiasingLineRenderer implements LineRenderer{
         double y = p1.getIntY();
         double x = p1.getIntX();
         int i = 1;
+       
         while(i <= step) {
-                int iX = (int)Math.round(x);
-                int iY = (int)Math.round(y);
-                
-//                double d0        = getLengthD(iX, iY - 2, slope, intercept);
-//                double fraction0 = getShadedFraction(d0);
-//                Color tmp0        = p1.getColor();
-//                int color0       = tmp0.scale(fraction0).asARGB();
-//                drawable.setPixel(iX, iY - 2, 0.0, color0);
-                
-                double d1        = getLengthD(iX, iY - 1, slope, intercept, iX, iY);
-                double fraction1 = getShadedFraction(d1);
-                Color tmp        = p1.getColor();
-                int color1       = tmp.scale(fraction1).asARGB();
+            int iX = (int)Math.round(x);
+            int iY = (int)Math.round(y);
+
+            double d1        = getLengthD(iX, iY - 1, slope, intercept, iX, iY);
+            double fraction1 = getShadedFraction(d1);
+            Color tmp        = p1.getColor();
+            int color1       = tmp.scale(fraction1).asARGB();
+            if(drawable.getPixel(iX, iY - 1) < color1){
                 drawable.setPixel(iX, iY - 1, 0.0, color1);
-             
-                double d2        = getLengthD(iX, iY, slope, intercept, iX, iY);
-                double fraction2 = getShadedFraction(d2);
-                Color tmp2       = p1.getColor();
-                int color2       = tmp2.scale(fraction2).asARGB();
+            }
+            
+            double d2        = getLengthD(iX, iY, slope, intercept, iX, iY);
+            double fraction2 = getShadedFraction(d2);
+            Color tmp2       = p1.getColor();
+            int color2       = tmp2.scale(fraction2).asARGB();
+            if(drawable.getPixel(iX, iY) < color2){
                 drawable.setPixel(iX, iY, 0.0, color2);
-               
-                double d3        = getLengthD(iX, iY + 1, slope, intercept, iX, iY);
-                double fraction3 = getShadedFraction(d3);
-                Color tmp3       = p1.getColor();
-                int color3       = tmp3.scale(fraction3).asARGB();
+            }
+                
+                
+            double d3        = getLengthD(iX, iY + 1, slope, intercept, iX, iY);
+            double fraction3 = getShadedFraction(d3);
+            Color tmp3       = p1.getColor();
+            int color3       = tmp3.scale(fraction3).asARGB();
+            if(drawable.getPixel(iX, iY + 1) < color3){
                 drawable.setPixel(iX, iY + 1, 0.0, color3);
+            }
+            
 //                System.out.printf(" iX: %d iY: %d slope: %.2f intercept: %.2f d1: %.2f f1: %.2f d2: %.2f f2: %.2f  d3: %.2f f3: %.2f\n",
-//                                 iX, iY, slope, intercept, d1, fraction1, d2,fraction2, d3,fraction3);
+//                iX, iY, slope, intercept, d1, fraction1, d2,fraction2, d3,fraction3);
                 y = y+ dY;
                 x = x + dX;
                 i++;

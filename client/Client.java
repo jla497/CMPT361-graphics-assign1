@@ -133,7 +133,7 @@ public class Client implements PageTurner {
 	}
 	private void lineDrawerPage(TestPerformer test) {
 		image.clear();
-                image.fill(ARGB_WHITE,1);
+//                image.fill(ARGB_WHITE,1);
 		for(int panelNumber = 0; panelNumber < panels.length; panelNumber++) {
 			panels[panelNumber].clear();
                         panels[panelNumber].fill(ARGB_BLACK,1);

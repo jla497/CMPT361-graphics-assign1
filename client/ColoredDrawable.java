@@ -25,6 +25,11 @@ public class ColoredDrawable extends DrawableDecorator {
 		return delegate.getZValue(x, y);
 	}
         
+        @Override
+        public void clear() {
+		fill(ARGB_WHITE, Double.MAX_VALUE);
+	}
+        
 //	@Override
 //	public void setPixelWithCoverage(int x, int y, double z, int argbColor, double coverage) {
 //		delegate.setPixelWithCoverage(x, y, z, argbColor, coverage);
