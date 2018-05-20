@@ -46,7 +46,8 @@ public class AntialiasingLineRenderer implements LineRenderer{
             Color tmp        = p1.getColor();
             int color1       = tmp.scale(fraction1).asARGB();
             if(drawable.getPixel(iX, iY - 1) < color1){
-                drawable.setPixel(iX, iY - 1, 0.0, color1);
+//                drawable.setPixel(iX, iY - 1, 0.0, color1);
+                drawable.setPixelWithCoverage(iX, iY - 1, 0.0, argbColor, fraction1);
             }
             
             double d2        = getLengthD(iX, iY, slope, intercept, iX, iY);
@@ -54,7 +55,7 @@ public class AntialiasingLineRenderer implements LineRenderer{
             Color tmp2       = p1.getColor();
             int color2       = tmp2.scale(fraction2).asARGB();
             if(drawable.getPixel(iX, iY) < color2){
-                drawable.setPixel(iX, iY, 0.0, color2);
+                drawable.setPixelWithCoverage(iX, iY, 0.0, argbColor, fraction2);
             }
                 
                 
@@ -63,9 +64,8 @@ public class AntialiasingLineRenderer implements LineRenderer{
             Color tmp3       = p1.getColor();
             int color3       = tmp3.scale(fraction3).asARGB();
             if(drawable.getPixel(iX, iY + 1) < color3){
-                drawable.setPixel(iX, iY + 1, 0.0, color3);
+                drawable.setPixelWithCoverage(iX, iY + 1, 0.0, argbColor, fraction3);
             }
-            
 //                System.out.printf(" iX: %d iY: %d slope: %.2f intercept: %.2f d1: %.2f f1: %.2f d2: %.2f f2: %.2f  d3: %.2f f3: %.2f\n",
 //                iX, iY, slope, intercept, d1, fraction1, d2,fraction2, d3,fraction3);
                 y = y+ dY;

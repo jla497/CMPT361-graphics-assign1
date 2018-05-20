@@ -8,6 +8,7 @@ package client.testPages;
 import geometry.Vertex3D;
 import line.LineRenderer;
 import windowing.drawable.Drawable;
+import java.util.Random;
 import windowing.graphics.Color;
 
 /**
@@ -15,9 +16,7 @@ import windowing.graphics.Color;
  * @author Administrator
  */
 public class RandomLineTest {
-    private static final int NUM_RAYS = 90;
-	private static final double FRACTION_OF_PANEL_FOR_DRAWING = 0.9;
-	
+    private static final int NUM_LINES = 30;
 	private final LineRenderer renderer;
 	private final Drawable panel;
 	Vertex3D center;
@@ -26,41 +25,25 @@ public class RandomLineTest {
 		this.panel = panel;
 		this.renderer = renderer;
 		
-		makeCenter();
 		render();
 	}
 	
 	private void render() {		
-		double radius = computeRadius();
-		double angleDifference = (2.0 * Math.PI) / NUM_RAYS;
-		double angle = 0.0;
-		
-		for(int ray = 0; ray < NUM_RAYS; ray++) {
-			Vertex3D radialPoint = radialPoint(radius, angle);
-			renderer.drawLine(center, radialPoint, panel);
-			
-			angle = angle + angleDifference;
+		Random random = new Random(1);
+                int maxX = panel.getWidth();
+		int maxY = panel.getHeight();
+                
+                for(int ray = 0; ray < NUM_LINES; ray++) {
+                        double X1 = random.nextInt(maxX);
+                        double X2 = random.nextInt(maxX);
+                        double Y1 = random.nextInt(maxY);
+                        double Y2 = random.nextInt(maxY);
+                        Color color = Color.random(random);
+                        
+                        Vertex3D V1 = new Vertex3D(X1, Y1, 0.0, color);
+                        Vertex3D V2 = new Vertex3D(X2, Y2, 0.0, color);
+			renderer.drawLine(V1, V2, panel);
 		}
 	}
 
-	private void makeCenter() {
-		int centerX = panel.getWidth() / 2;
-		int centerY = panel.getHeight() / 2;
-		center = new Vertex3D(centerX, centerY, 0, Color.WHITE);
-	}
-
-	private Vertex3D radialPoint(double radius, double angle) {
-		double x = center.getX() + radius * Math.cos(angle);
-		double y = center.getY() + radius * Math.sin(angle);
-		return new Vertex3D(x, y, 0, Color.WHITE);
-	}
-	
-	private double computeRadius() {
-		int width = panel.getWidth();
-		int height = panel.getHeight();
-		
-		int minDimension = width < height ? width : height;
-		
-		return (minDimension / 2.0) * FRACTION_OF_PANEL_FOR_DRAWING;
-	}
 }

@@ -1,9 +1,7 @@
 package line;
 
-import geometry.Vertex;
 import geometry.Vertex3D;
 import windowing.drawable.Drawable;
-import windowing.graphics.Color;
 
 public class ExpensiveLineRenderer implements LineRenderer {
 	// use the static factory make() instead of constructor.

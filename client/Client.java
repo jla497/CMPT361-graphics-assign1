@@ -6,11 +6,11 @@ import line.AlternatingLineRenderer;
 import line.ExpensiveLineRenderer;
 import line.LineRenderer;
 import client.ColoredDrawable;
-//import notProvided.client.testpages.MeshPolygonTest;
+import client.testPages.MeshPolygonTest;
 import client.testPages.ParallelogramTest;
 import client.testPages.RandomLineTest;
-//import notProvided.client.testpages.RandomPolygonTest;
-//import client.testPages.StarburstPolygonTest;
+import client.testPages.RandomPolygonTest;
+import client.testPages.StarburstPolygonTest;
 import line.AntialiasingLineRenderer;
 import line.BresenhamLineRenderer;
 import line.DDALineRenderer;
@@ -145,10 +145,10 @@ public class Client implements PageTurner {
 		for(Drawable panel: panels) {		// 'panels' necessary here.  Not panelArray, because clear() uses setPixel.
 			panel.clear();
 		}
-//		new StarburstPolygonTest(panelArray[0], polygonRenderer);
-//		new MeshPolygonTest(panelArray[1], polygonRenderer, MeshPolygonTest.NO_PERTURBATION);
-//		new MeshPolygonTest(panelArray[2], polygonRenderer, MeshPolygonTest.USE_PERTURBATION);
-//		new RandomPolygonTest(panelArray[3], polygonRenderer);
+		new StarburstPolygonTest(panelArray[0], polygonRenderer);
+		new MeshPolygonTest(panelArray[1], polygonRenderer, MeshPolygonTest.NO_PERTURBATION);
+		new MeshPolygonTest(panelArray[2], polygonRenderer, MeshPolygonTest.USE_PERTURBATION);
+		new RandomPolygonTest(panelArray[3], polygonRenderer);
 	}
 
 	private void defaultPage() {
