@@ -33,12 +33,12 @@ public class FilledPolygonRenderer implements PolygonRenderer {
             System.out.println(v.toIntString());
         }
         
-        if(vertices.get(0).getIntY() == vertices.get(1).getIntY()){
+        if(vertices.get(0).getY() == vertices.get(1).getY()){
             fillBottomTriangle(vertices, drawable);
             return;
         }
         
-        if(vertices.get(1).getIntY() == vertices.get(2).getIntY()){
+        if(vertices.get(1).getY() == vertices.get(2).getY()){
             fillTopTriangle(vertices, drawable);
             return;
         }
@@ -52,7 +52,7 @@ public class FilledPolygonRenderer implements PolygonRenderer {
         }
         
         double offset =(higherV.getY() - topV.getY())/(lowerV.getY() - topV.getY()) *
-                               (lowerV.getX() - topV.getX()); 
+                       (lowerV.getX() - topV.getX()); 
 //        System.out.printf("offset: %.2f\n",offset);
         double x4 = topV.getX() + offset;
         double y4 = higherV.getY();
@@ -94,8 +94,8 @@ public class FilledPolygonRenderer implements PolygonRenderer {
         double deltaXr = vt.getX() - vr.getX();
         double mleft = deltaXl/deltaY;
         double mright = deltaXr/deltaY;
-        double leftBound = vt.getIntX();
-        double rightBound = vt.getIntX();
+        double leftBound = vt.getX();
+        double rightBound = vt.getX();
         
         int start = vt.getIntY();
         int stop = vl.getIntY();
@@ -127,8 +127,8 @@ public class FilledPolygonRenderer implements PolygonRenderer {
         double deltaXr = vt.getX() - vr.getX();
         double mleft  = deltaXl/deltaY;
         double mright = deltaXr/deltaY;
-        double leftBound = vl.getIntX();
-        double rightBound = vr.getIntX();
+        double leftBound = vl.getX();
+        double rightBound = vr.getX();
         Vertex3D leftV = vt;
         Vertex3D rightV = vt;
         int top = vt.getIntY();

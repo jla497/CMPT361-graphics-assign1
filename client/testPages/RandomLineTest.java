@@ -19,7 +19,6 @@ public class RandomLineTest {
     private static final int NUM_LINES = 30;
 	private final LineRenderer renderer;
 	private final Drawable panel;
-	Vertex3D center;
 
 	public RandomLineTest(Drawable panel, LineRenderer renderer) {
 		this.panel = panel;
@@ -40,8 +39,12 @@ public class RandomLineTest {
                         double Y2 = random.nextInt(maxY);
                         Color color = Color.random(random);
                         
-                        Vertex3D V1 = new Vertex3D(X1, Y1, 0.0, color);
-                        Vertex3D V2 = new Vertex3D(X2, Y2, 0.0, color);
+                        Vertex3D V1 = new Vertex3D(X1, Y1, 0.0, Color.WHITE);
+                        Vertex3D V2 = new Vertex3D(X2, Y2, 0.0, Color.WHITE);
+                        Color newColor = V1.getColor().blendInto(0.0, color);
+                        V1 = V1.replaceColor(newColor);
+                        V2 = V2.replaceColor(newColor);
+                        System.out.println(newColor.toIntString());
 			renderer.drawLine(V1, V2, panel);
 		}
 	}

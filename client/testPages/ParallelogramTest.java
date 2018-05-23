@@ -8,9 +8,6 @@ import windowing.drawable.InvertedYDrawable;
 import windowing.graphics.Color;
 
 public class ParallelogramTest {
-	private static final int NUM_RAYS = 90;
-	private static final double FRACTION_OF_PANEL_FOR_DRAWING = 0.9;
-	
 	private final LineRenderer renderer;
 	private final Drawable panel;
 	Vertex3D center;
